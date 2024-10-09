@@ -117,6 +117,7 @@
   }
 }
 
+
 @media (max-width: 320px) {
   .profile {
     margin: 42px auto 0;
@@ -166,7 +167,7 @@
     text-align: center;
   }
 
-  .profile__add-button {
-    max-width: 282px;
+  .profile__button-img {
+    width: 282px;
   }
 }
