@@ -167,6 +167,10 @@
     text-align: center;
   }
 
+  .profile__add-button {
+    width: 282px;
+  }
+
   .profile__button-img {
     width: 282px;
   }
