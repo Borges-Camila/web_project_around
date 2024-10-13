@@ -56,7 +56,7 @@
 
       <!--POPUP PARA EDITAÇÃO DO PERFIL-->
 
-      <section class="popup">
+      <div class="popup">
         <div class="popup__form" id="popupForm">
           <button
             type="button"
@@ -66,7 +66,7 @@
             <img
               src="./images/close-icon.svg"
               alt="Close icon X"
-              class="popup__close-button"
+
             />
           </button>
           <div class="popup__form-content">
@@ -75,22 +75,24 @@
               <label for="popup__input-name" class="popup__label">Nome</label>
               <input
                 type="text"
-                id="popup__input-name"
+                id="input-name"
                 name="name"
                 required
                 minlength="2"
                 maxlength="40"
                 class="popup__input"
+                placeholder="Nome"
               />
               <label for="popup__input-about" class="popup__label">Sobre mim</label>
               <input
                 type="text"
-                id="popup__input-about"
+                id="input-about"
                 name="about"
                 required
                 minlength="2"
                 maxlength="200"
                 class="popup__input"
+                placeholder="Sobre mim"
               />
               <button type="submit" class="popup__save-button">
                 Salvar
@@ -98,7 +100,7 @@
             </form>
           </div>
         </div>
-      </section>
+      </div>
 
 
       <!--SÓ PARA SEPARAR O CONTEÚDO-->
@@ -199,5 +201,6 @@
         <p class="footer__paragraph">&copy; 2024 Around the U.S.</p>
       </footer>
     </div>
+    <script src="./index.js"></script>
   </body>
 </html>
