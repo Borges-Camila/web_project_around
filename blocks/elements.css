@@ -58,6 +58,14 @@
   background-image: url(../images/Coração-Preto.png);
 }
 
+@media (max-width: 900px) {
+.element {
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  max-width: 790px;
+}
+}
+
 @media (max-width: 800px) {
   .elements {
     max-width: 590px;
