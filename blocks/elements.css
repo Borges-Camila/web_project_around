@@ -54,6 +54,10 @@
   opacity: 0.7;
 }
 
+.element__heart-active {
+  background-image: url(../images/Coração-Preto.png);
+}
+
 @media (max-width: 800px) {
   .elements {
     max-width: 590px;

@@ -10,6 +10,9 @@ const profileAbout = document.querySelector(".profile__subtitle-text")
 
 const saveButton = document.querySelector(".popup__save-button")
 
+// organizar a constante para o incone de coração
+const heartButton = document.querySelector(".element__heart")
+
 
 function openPopup() {
   popup.classList.add("popup__change")
@@ -31,3 +34,10 @@ function updateProfileInfo(evento) {
 }
 
 saveButton.addEventListener("click", updateProfileInfo)
+
+// função para ativar o botão de coração dos cards
+
+function likeHeart() {
+  heartButton.classList.toggle("element__heart-active")
+}
+heartButton.addEventListener("click", likeHeart)
