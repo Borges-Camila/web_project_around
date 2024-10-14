@@ -76,6 +76,16 @@
   }
 }
 
+@media (max-width: 580px) {
+  .elements {
+    max-width: 500px;
+    margin: 43px auto 0;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    justify-content: center;
+  }
+}
+
 @media (max-width: 320px) {
   .elements {
     margin-top: 36px;

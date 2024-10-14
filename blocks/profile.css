@@ -117,6 +117,64 @@
   }
 }
 
+@media (max-width: 580px) {
+  .profile {
+    margin: 42px auto 0;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+
+  }
+
+  .profile__avatar {
+    margin: auto auto 30px;
+  }
+
+  .profile__info {
+    max-width: 500px;
+    margin: auto auto 36px;
+  }
+
+  .profile__title-edit {
+    max-width: 224px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .profile__title {
+    max-width: 196px;
+    font-size: 22px;
+    line-height: 26.63px;
+  }
+
+  .profile__edit-button {
+    width: 18px;
+    height: 18px;
+    margin-top: 4px;
+    margin-left: 10px;
+  }
+
+  .profile__subtitle {
+    max-width: 282px;
+    margin-top: 14px;
+  }
+
+  .profile__subtitle-text {
+    font-size: 14px;
+    line-height: 16.94px;
+    text-align: center;
+  }
+
+  .profile__add-button {
+    max-width: 250px;
+    margin: 10px auto 0;
+  }
+
+  .profile__button-img {
+    max-width: 250px;
+  }
+}
+
 
 @media (max-width: 320px) {
   .profile {
