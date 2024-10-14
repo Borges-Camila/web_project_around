@@ -79,14 +79,7 @@
   opacity: 0.7;
 }
 
-@media (max-width: 900px) {
-  .profile {
-    margin: 30px auto 0;
-    max-width: 800px;
-  }
-}
-
-@media (max-width: 800px) {
+@media (min-width: 580px) and (max-width: 900px) {
   .profile {
     margin: 30px auto 0;
     max-width: 700px;
