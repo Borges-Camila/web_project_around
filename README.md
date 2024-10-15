@@ -1,6 +1,6 @@
 # Tripleten web_project_around
 <h1 align="center">
-  <p>Acessar <a href="https://github.com/Borges-Camila/web_project_around">aqui</a></p>
+  <p>Acessar <a href="https://borges-camila.github.io/web_project_around/">aqui</a></p>
 </h1>
  
 - Projeto referente a Sprint 7 do curso TripleTen, com o objetivo de colocar em prática novos conhecimento de JavaScript.
