@@ -23,6 +23,7 @@ hr {
   }
   .header__logo {
     width: 147px;
+    margin-left: 10px;
   }
 }
 
