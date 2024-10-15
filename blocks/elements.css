@@ -58,7 +58,7 @@
   background-image: url(../images/Coração-Preto.png);
 }
 
-@media  (min-width: 580px) and (max-width: 900px) {
+@media  (min-width: 600px) and (max-width: 900px) {
   .elements {
     max-width: 590px;
     margin: 43px auto 0;
@@ -68,7 +68,7 @@
   }
 }
 
-@media (min-width: 320px) and (max-width: 580px) {
+@media (min-width: 320px) and (max-width: 600px) {
   .elements {
     margin: 36px auto 0;
     max-width: 300px;
