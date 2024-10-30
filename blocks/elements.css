@@ -1,6 +1,6 @@
 .elements {
   max-width: 880px;
-  margin: 50px auto 0;
+  margin: 40px auto 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
@@ -9,24 +9,27 @@
 }
 
 .element {
-  width: 282px;
-  height: 361px;
-  border-radius: 10px;
-  background-color: white;
+  max-width: 282px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 
 .element__image {
   width: 282px;
   height: 282px;
   border-radius: 10px 10px 0px 0px;
+  cursor: pointer;
 }
 
 .element__content {
-  max-width: 246px;
+  max-width: 282px;
+  background-color: white;
   display: flex;
   justify-content: space-between;
-  margin: 24px auto auto;
-  padding: 0;
+  margin: 0;
+  padding: 25px 15px;
+  border-radius: 0px 0px 10px 10px;
 }
 
 .element__place-name {
@@ -56,6 +59,20 @@
 
 .element__heart-active {
   background-image: url(../images/Coração-Preto.png);
+}
+
+.element__trash {
+  max-width: 18px;
+  position: relative;
+  top: 35px;
+  left: 249px;
+  border: none;
+  background-color: transparent;
+}
+
+.element__trash:hover {
+  cursor: pointer;
+  opacity: 0.7;
 }
 
 @media  (min-width: 600px) and (max-width: 900px) {
