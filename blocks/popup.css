@@ -105,6 +105,8 @@
   background-color: #333;
 }
 
+
+
 @media (max-width: 800px) {
   .popup__form {
     top: 195px;

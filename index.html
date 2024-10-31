@@ -56,7 +56,7 @@
 
       <!--POPUP PARA EDITAÇÃO DO PERFIL-->
 
-      <div class="popup">
+      <div class="popup" id="editProfilePopup">
         <div class="popup__form" id="popupForm">
           <button
             type="button"
@@ -104,9 +104,72 @@
         </div>
       </div>
 
-      <!--SÓ PARA SEPARAR O CONTEÚDO-->
+<!--POPUP PARA ADICIONAR CARTÕES-->
+
+      <div class="popup" id="addCardPopup">
+        <div class="popup__form" id="popupForm">
+          <button
+            type="button"
+            class="popup__close-button"
+            id="close-button-card"
+          >
+            <img
+              src="./images/close-icon.svg"
+              alt="Close icon X"
+
+            />
+          </button>
+          <div class="popup__form-content">
+            <h3 class="popup__form-title">Novo Local</h3>
+            <form class="popup__form-table" id="popup__form-table">
+              <label for="popup__input-name" class="popup__label">Título</label>
+              <input
+                type="text"
+                id="input-title"
+                name="name"
+                required
+                minlength="2"
+                maxlength="40"
+                class="popup__input"
+                placeholder="Título"
+              />
+              <label for="popup__input-about" class="popup__label">Link da imagem</label>
+              <input
+                type="text"
+                id="input-link"
+                name="link"
+                required
+                minlength="2"
+                maxlength="500"
+                class="popup__input"
+                placeholder="Link da imagem"
+              />
+              <button type="submit" class="popup__save-button" id="create-button">
+                Criar
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+<!--POPUP PARA AMPLIAR IMAGEM DOS CARTÕES-->
+      <section class="popup" id="ImagePopup">
+        <div class="popup__content-image">
+          <button class="popup__image-button" id="CloseImagePopup">
+           <img src="./images/close-icon.svg"
+           alt="Close icon X"
+           />
+          </button>
+          <img alt="imagem ampliada" class="popup__image" />
+          <p class="popup__paragraph"></p>
+        </div>
+      </section>
+
+
+      <!--código dos cartões-->
 
       <section class="elements">
+        <template id="card-template">
         <div class="element">
           <img
             src="./images/Trash.png"
@@ -115,13 +178,13 @@
           />
 
           <img
-            src="./images/Card-1.jpg"
-            alt="Fotografica de um rio cercado de pinheiros altos, com uma montanha ao fundo."
+            src=""
+            alt=""
             class="element__image"
           />
 
           <div class="element__content">
-            <h2 class="element__place-name">Vale de Yosemite</h2>
+            <h2 class="element__place-name"></h2>
             <img
               src="./images/Coração.svg"
               alt="Coração."
@@ -129,82 +192,11 @@
             />
           </div>
         </div>
-        <div class="element">
-          <img
-            src="./images/Card-2.png"
-            alt="Fotografia de um lago com águas azuie e montanhas."
-            class="element__image"
-          />
-          <div class="element__content">
-            <h2 class="element__place-name">Lago Louise</h2>
-            <img
-              src="./images/Coração.svg"
-              alt="Coração."
-              class="element__heart"
-            />
-          </div>
-        </div>
-        <div class="element">
-          <img
-            src="./images/Card-3.png"
-            alt="Fotografica de uma região montanhosa com por do sol ao fundo."
-            class="element__image"
-          />
-          <div class="element__content">
-            <h2 class="element__place-name">Montanhas Care...</h2>
-            <img
-              src="./images/Coração.svg"
-              alt="Coração."
-              class="element__heart"
-            />
-          </div>
-        </div>
-        <div class="element">
-          <img
-            src="./images/Card-4.png"
-            alt="Fotografica montanhas com pouca neva a base e com céu estrelado."
-            class="element__image"
-          />
-          <div class="element__content">
-            <h2 class="element__place-name">Latemar</h2>
-            <img
-              src="./images/Coração.svg"
-              alt="Coração."
-              class="element__heart"
-            />
-          </div>
-        </div>
-        <div class="element">
-          <img
-            src="./images/Card-5.png"
-            alt="Fotografica da beira de um lago com montanhas com neve ao fundo, e céu azul."
-            class="element__image"
-          />
-          <div class="element__content">
-            <h2 class="element__place-name">Parque Nacional...</h2>
-            <img
-              src="./images/Coração.svg"
-              alt="Coração."
-              class="element__heart"
-            />
-          </div>
-        </div>
-        <div class="element">
-          <img
-            src="./images/Card-6.png"
-            alt="Fotografica de um lago, onde há um cais e barcos a remo, com montanhas ao fundo."
-            class="element__image"
-          />
-          <div class="element__content">
-            <h2 class="element__place-name">Lago di Braies</h2>
-            <img
-              src="./images/Coração.svg"
-              alt="Coração."
-              class="element__heart"
-            />
-          </div>
-        </div>
+      </template>
       </section>
+
+ <!--separação de código-->
+
       <footer class="footer">
         <p class="footer__paragraph">&copy; 2024 Around the U.S.</p>
       </footer>
