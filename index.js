@@ -10,29 +10,6 @@ const profileAbout = document.querySelector(".profile__subtitle-text") // chaman
 
 const saveButton = document.querySelector(".popup__save-button") // chamando o botão de salvar
 
-
-// funções que abre e fecha os popups
-function openPopup() {
-  profilePopup.classList.add("popup__change") // profile popup
-}
-editButton.addEventListener("click", openPopup)
-function closePopup() {
-  profilePopup.classList.remove("popup__change") // profile popup
-}
-closeButton.addEventListener("click", closePopup)
-
-// Função para alterar as informações do profile
-function updateProfileInfo(evento) {
-  evento.preventDefault()
-  if(indexName.value != "" && indexAbout.value != "") {
-    profileName.textContent = indexName.value
-    profileAbout.textContent = indexAbout.value
-    closePopup()
-  }
-}
-saveButton.addEventListener("click", updateProfileInfo)
-
-
 // organizar a constante para o popup para adicionar os cards
 
 const addButton = document.querySelector(".profile__add-button") // botão do + card
@@ -81,6 +58,28 @@ const initialCards = [
 ];
 
 
+// funções que abre e fecha os popups
+function openPopup() {
+  profilePopup.classList.add("popup__change") // profile popup
+}
+editButton.addEventListener("click", openPopup)
+function closePopup() {
+  profilePopup.classList.remove("popup__change") // profile popup
+}
+closeButton.addEventListener("click", closePopup)
+
+// Função para alterar as informações do profile
+function updateProfileInfo(evento) {
+  evento.preventDefault()
+  if(indexName.value != "" && indexAbout.value != "") {
+    profileName.textContent = indexName.value
+    profileAbout.textContent = indexAbout.value
+    closePopup()
+  }
+}
+saveButton.addEventListener("click", updateProfileInfo)
+
+
 // função para o abrir e fechar o popup de adicionar cartões
 
 addButton.addEventListener("click", function openCardPopup (){
@@ -98,6 +97,12 @@ function createCard(card) {
   Element.querySelector(".element__place-name").textContent = card.name
   Element.querySelector(".element__image").setAttribute("src", card.link)
   Element.querySelector(".element__image").setAttribute("alt", card.name)
+  Element.querySelector(".element__trash").addEventListener("click", function (event){
+    event.target.parentElement.remove()
+  })
+  Element.querySelector(".element__heart").addEventListener("click", function (eve){
+    eve.target.classList.toggle("element__heart-active")
+  })
   return Element
 }
 
@@ -118,23 +123,4 @@ function addNewCard(event){
     containerCard.prepend(newCard)
   }
 }
-
 createButton.addEventListener("click", addNewCard)
-
-// organizar a constante para o incone de coração
-const heartButton = document.querySelector(".element__heart") // chamando o botão de coração
-
-// função para ativar o botão de coração dos cards
-
-function likeHeart() {
-  heartButton.classList.toggle("element__heart-active")
-}
-heartButton.addEventListener("click", likeHeart)
-
-
-// colocar a constante da lixeira dos cards
-const trashButton = document.querySelector(".element__trash")
-
-
-// função para ativar o botão de exclusão dos cards
-
