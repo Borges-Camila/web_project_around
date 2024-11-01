@@ -58,6 +58,22 @@ const initialCards = [
 ];
 
 
+// IMAGEM DO CARTÃO
+const elementImage = document.querySelector(".element__image")
+
+// O POPUP DA SECTION DE AMPLIAÇÃO DA IMAGEM
+const bigImage = document.querySelector("#PopupImage")
+
+// BOTÃO DE FECHAR id="CloseImagePopup"
+const buttonCloseImage = document.querySelector("#CloseImagePopup")
+
+buttonCloseImage.addEventListener("click", function removeBigImage() {
+  bigImage.classList.remove("popup__change")
+})
+
+
+
+
 // funções que abre e fecha os popups
 function openPopup() {
   profilePopup.classList.add("popup__change") // profile popup
@@ -79,7 +95,6 @@ function updateProfileInfo(evento) {
 }
 saveButton.addEventListener("click", updateProfileInfo)
 
-
 // função para o abrir e fechar o popup de adicionar cartões
 
 addButton.addEventListener("click", function openCardPopup (){
@@ -89,36 +104,6 @@ addButton.addEventListener("click", function openCardPopup (){
 closeCardPopup.addEventListener("click", function openCardPopup (){
   CardPopup.classList.remove("popup__change")
 })
-
-
-// IMAGEM DO CARTÃO
-const elementImage = document.querySelector(".element__image")
-
-
-// elementImage.addEventListener("click", function openBigImage () {
-//   bigImage.classList.add("popup__change")
-// })
-
-// buttonCloseImage.addEventListener("click", function closeBigImage () {
-//   bigImage.classList.add("popup__change")
-// })
-
-
-
-
-
-
-
-
-// O POPUP DA SECTION DE AMPLIAÇÃO DA IMAGEM
-const bigImage = document.querySelector("#PopupImage")
-// BOTÃO DE FECHAR id="CloseImagePopup"
-const buttonCloseImage = document.querySelector("#CloseImagePopup")
-
-buttonCloseImage.addEventListener("click", function removeBigImage() {
-  bigImage.classList.remove("popup__change")
-})
-
 
 function createCard(card) {
   const Template = document.querySelector("#card-template").content
@@ -135,28 +120,15 @@ function createCard(card) {
 
   Element.querySelector(".element__image").addEventListener("click", function openBigImage() {
     bigImage.classList.add("popup__change")
+    bigImage.querySelector(".popup__paragraph").textContent = card.name
+    bigImage.querySelector(".popup__image").setAttribute("src", card.link)
   })
-
-
-  // Element.querySelector(".element__image").addEventListener("click", (event) => {
-  //   const isBigImage = element.target.classList.add("popup__change")
-  //   // BigImagePopupApear(card, isBigImage)
-  // })
-
-
   return Element
 }
 
-// const bigImageSection= document.querySelector("#PopupImage").content
-
-// function BigImagePopupApear(card, isBigImage) {
-//   if (isBigImage) {
-//     const biggerImage = bigImageSection.querySelector(".popup__content-image").cloneNode(true)
-//     biggerImage.querySelector(".popup__paragraph").textContent = card.name
-//     biggerImage.querySelector(".popup__image").setAttribute("src", card.link)
-//   }
-// }
-
+buttonCloseImage.addEventListener("click", function removeBigImage() {
+  bigImage.classList.remove("popup__change")
+})
 
 for (const card of initialCards) {
   const newCard = createCard(card)
