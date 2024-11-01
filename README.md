@@ -4,6 +4,7 @@
 </h1>
  
 - Projeto referente a Sprint 7 do curso TripleTen, com o objetivo de colocar em prática novos conhecimento de JavaScript.
+- Trata-se de uma página simples de rede social, com a possibilidade de modificar o profile, adicionar mais postagens de foto e curti-las, além de conseguir amplicar as fotografias para melhor visualização. 
 
 ## Tecnologias
 
@@ -13,4 +14,3 @@
 
 - Você pode clonar o repositório
 - Abrir os arquivos disponibilizados
-
