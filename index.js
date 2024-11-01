@@ -24,7 +24,7 @@ const containerCard = document.querySelector(".elements")
 
 // colocar a constante referente a imagem e ao nome do local
 const placeName = document.querySelector(".element__place-name")
-const elementImage = document.querySelector(".element__image")
+
 
 // botão do popup de cartões
 const createButton = document.querySelector("#create-button")
@@ -91,6 +91,35 @@ closeCardPopup.addEventListener("click", function openCardPopup (){
 })
 
 
+// IMAGEM DO CARTÃO
+const elementImage = document.querySelector(".element__image")
+
+
+// elementImage.addEventListener("click", function openBigImage () {
+//   bigImage.classList.add("popup__change")
+// })
+
+// buttonCloseImage.addEventListener("click", function closeBigImage () {
+//   bigImage.classList.add("popup__change")
+// })
+
+
+
+
+
+
+
+
+// O POPUP DA SECTION DE AMPLIAÇÃO DA IMAGEM
+const bigImage = document.querySelector("#PopupImage")
+// BOTÃO DE FECHAR id="CloseImagePopup"
+const buttonCloseImage = document.querySelector("#CloseImagePopup")
+
+buttonCloseImage.addEventListener("click", function removeBigImage() {
+  bigImage.classList.remove("popup__change")
+})
+
+
 function createCard(card) {
   const Template = document.querySelector("#card-template").content
   const Element = Template.querySelector(".element").cloneNode(true)
@@ -103,8 +132,31 @@ function createCard(card) {
   Element.querySelector(".element__heart").addEventListener("click", function (eve){
     eve.target.classList.toggle("element__heart-active")
   })
+
+  Element.querySelector(".element__image").addEventListener("click", function openBigImage() {
+    bigImage.classList.add("popup__change")
+  })
+
+
+  // Element.querySelector(".element__image").addEventListener("click", (event) => {
+  //   const isBigImage = element.target.classList.add("popup__change")
+  //   // BigImagePopupApear(card, isBigImage)
+  // })
+
+
   return Element
 }
+
+// const bigImageSection= document.querySelector("#PopupImage").content
+
+// function BigImagePopupApear(card, isBigImage) {
+//   if (isBigImage) {
+//     const biggerImage = bigImageSection.querySelector(".popup__content-image").cloneNode(true)
+//     biggerImage.querySelector(".popup__paragraph").textContent = card.name
+//     biggerImage.querySelector(".popup__image").setAttribute("src", card.link)
+//   }
+// }
+
 
 for (const card of initialCards) {
   const newCard = createCard(card)

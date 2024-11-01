@@ -112,7 +112,7 @@
 }
 
 .popup__image {
-  width: 816px;
+  max-width: 816px;
 }
 
 .popup__paragraph {
@@ -133,6 +133,11 @@
   height: 40px;
   position: relative;
   left: 830px
+}
+
+.popup__image-button:hover {
+  opacity: 0.6;
+  cursor: pointer;
 }
 
 
