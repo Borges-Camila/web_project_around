@@ -19,12 +19,10 @@ const closeCardPopup = document.querySelector("#close-button-card") // botão de
 // chamar os campos do formulário dos Cartões
 const indexTitle = document.querySelector("#input-title")
 const indexLink = document.querySelector("#input-link")
-
 const containerCard = document.querySelector(".elements")
 
 // colocar a constante referente a imagem e ao nome do local
 const placeName = document.querySelector(".element__place-name")
-
 
 // botão do popup de cartões
 const createButton = document.querySelector("#create-button")
@@ -58,20 +56,14 @@ const initialCards = [
 ];
 
 
-// IMAGEM DO CARTÃO
+// IMAGEM DO CARTÃO - constantes para ampliação da imagem
 const elementImage = document.querySelector(".element__image")
-
-// O POPUP DA SECTION DE AMPLIAÇÃO DA IMAGEM
 const bigImage = document.querySelector("#PopupImage")
-
-// BOTÃO DE FECHAR id="CloseImagePopup"
 const buttonCloseImage = document.querySelector("#CloseImagePopup")
 
 buttonCloseImage.addEventListener("click", function removeBigImage() {
   bigImage.classList.remove("popup__change")
 })
-
-
 
 
 // funções que abre e fecha os popups
@@ -126,6 +118,10 @@ function createCard(card) {
   return Element
 }
 
+// botão de adicionar os cards
+
+// createButton.addEventListener("click", createCard)
+
 buttonCloseImage.addEventListener("click", function removeBigImage() {
   bigImage.classList.remove("popup__change")
 })
@@ -138,13 +134,14 @@ for (const card of initialCards) {
 function addNewCard(event){
   event.preventDefault()
   if(indexTitle.value != "" && indexLink.value != "") {
-    createCard({
+    const newCard = createCard({
       name: indexTitle.value,
       link: indexLink.value
     })
+    containerCard.prepend(newCard)
     indexTitle.value = ""
     indexLink.value = ""
-    containerCard.prepend(newCard)
+
   }
 }
 createButton.addEventListener("click", addNewCard)
