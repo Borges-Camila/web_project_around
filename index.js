@@ -14,7 +14,7 @@ const saveButton = document.querySelector(".popup__save-button") // chamando o b
 
 const addButton = document.querySelector(".profile__add-button") // botão do + card
 const CardPopup = document.querySelector("#addCardPopup") // popup Cartão
-const closeCardPopup = document.querySelector("#close-button-card") // botão de fechar
+const closeBtnCardPopup = document.querySelector("#close-button-card") // botão de fechar
 
 // chamar os campos do formulário dos Cartões
 const indexTitle = document.querySelector("#input-title")
@@ -89,13 +89,15 @@ saveButton.addEventListener("click", updateProfileInfo)
 
 // função para o abrir e fechar o popup de adicionar cartões
 
-addButton.addEventListener("click", function openCardPopup (){
+function openCardPopup (){
   CardPopup.classList.add("popup__change")
-})
+}
+addButton.addEventListener("click", openCardPopup)
 
-closeCardPopup.addEventListener("click", function openCardPopup (){
+function closeCardPopup (){
   CardPopup.classList.remove("popup__change")
-})
+}
+closeBtnCardPopup.addEventListener("click", closeCardPopup)
 
 function createCard(card) {
   const Template = document.querySelector("#card-template").content
@@ -118,9 +120,6 @@ function createCard(card) {
   return Element
 }
 
-// botão de adicionar os cards
-
-// createButton.addEventListener("click", createCard)
 
 buttonCloseImage.addEventListener("click", function removeBigImage() {
   bigImage.classList.remove("popup__change")
@@ -141,7 +140,7 @@ function addNewCard(event){
     containerCard.prepend(newCard)
     indexTitle.value = ""
     indexLink.value = ""
-
+    closeCardPopup()
   }
 }
 createButton.addEventListener("click", addNewCard)
