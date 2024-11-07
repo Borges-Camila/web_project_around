@@ -167,5 +167,10 @@ bigImage.addEventListener("click", (evento) => {
     removeBigImage()}
 })
 
-
+document.addEventListener("keydown", function (e){
+ if (e.key === "Escape") {
+  closePopup()
+  closeCardPopup ()
+  removeBigImage() }
+})
 // criar a função que fecha clicando na tecla esc
