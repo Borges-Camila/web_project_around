@@ -78,12 +78,6 @@ function closePopup() {
 closeButton.addEventListener("click", closePopup)
 
 
-// função que fecha o popup do profile com click na sobreposição
-profilePopup.addEventListener("click", (evento) => {
-  if (evento.target == profilePopup){
-  closePopup()
-}
-})
 
 // Função para alterar as informações do profile
 function updateProfileInfo(evento) {
@@ -108,11 +102,7 @@ function closeCardPopup (){
 }
 closeBtnCardPopup.addEventListener("click", closeCardPopup)
 
-// função que fecha o popup de adicionar com click na sobreposição
-CardPopup.addEventListener("click", (evento) => {
-  if (evento.target == CardPopup){
-  closeCardPopup ()}
-})
+
 
 function createCard(card) {
   const Template = document.querySelector("#card-template").content
@@ -155,16 +145,24 @@ function addNewCard(event){
 }
 createButton.addEventListener("click", addNewCard)
 
+
 // função para fechar a imagem ampliada
+
 function removeBigImage() {
   bigImage.classList.remove("popup__change")
 }
 buttonCloseImage.addEventListener("click", removeBigImage)
 
-// função que fecha o popup da imagem ampliada com click na sobreposição
-bigImage.addEventListener("click", (evento) => {
+
+// função para fechar o popup clicando na sobreposição
+
+document.addEventListener("click", function (evento){
+  if (evento.target == profilePopup){
+      closePopup()}
+  if (evento.target == CardPopup){
+      closeCardPopup ()}
   if (evento.target == bigImage){
-    removeBigImage()}
+      removeBigImage()}
 })
 
 document.addEventListener("keydown", function (e){
@@ -173,4 +171,3 @@ document.addEventListener("keydown", function (e){
   closeCardPopup ()
   removeBigImage() }
 })
-// criar a função que fecha clicando na tecla esc

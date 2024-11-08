@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -71,8 +71,7 @@
           </button>
           <div class="popup__form-content">
             <h3 class="popup__form-title">Editar perfil</h3>
-            <form class="popup__form-table" id="popup__form-table">
-              <label for="popup__input-name" class="popup__label">Nome</label>
+            <form class="popup__form-table" id="popup__form-table" novalidate>
               <input
                 type="text"
                 id="input-name"
@@ -84,7 +83,8 @@
                 placeholder="Nome"
                 value="Jacques Cousteau"
               />
-              <label for="popup__input-about" class="popup__label">Sobre mim</label>
+              <span id="name-error" class="popup__message"></span>
+
               <input
                 type="text"
                 id="input-about"
@@ -96,6 +96,7 @@
                 placeholder="Sobre mim"
                 value="Explorador"
               />
+              <span id="about-error" class="popup__message"></span>
               <button type="submit" class="popup__save-button">
                 Salvar
               </button>
@@ -122,28 +123,27 @@
           <div class="popup__form-content">
             <h3 class="popup__form-title">Novo Local</h3>
             <form class="popup__form-table" id="popup__form-table">
-              <label for="popup__input-name" class="popup__label">Título</label>
               <input
                 type="text"
                 id="input-title"
                 name="name"
                 required
                 minlength="2"
-                maxlength="40"
+                maxlength="30"
                 class="popup__input"
                 placeholder="Título"
               />
-              <label for="popup__input-about" class="popup__label">Link da imagem</label>
+              <span id="title-error" class="popup__message"></span>
+
               <input
                 type="text"
                 id="input-link"
                 name="link"
                 required
-                minlength="2"
-                maxlength="500"
                 class="popup__input"
                 placeholder="Link da imagem"
               />
+              <span id="link-error" class="popup__message"></span>
               <button type="submit" class="popup__save-button" id="create-button">
                 Criar
               </button>
