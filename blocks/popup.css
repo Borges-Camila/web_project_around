@@ -71,7 +71,7 @@
   height: 27.34px;
   margin: 0 auto 29px;
   border: none;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #b8b8b8;
   font-family: Inter;
   font-size: 14px;
   font-weight: 400;
@@ -152,7 +152,6 @@
   max-width: 358px;
   color: #ff0000;
   font-size: 12px;
-  /* visibility: hidden; */
   display: block;
   font-family: Inter;
   font-weight: 400;
@@ -165,7 +164,6 @@
   margin-bottom: 0;
   border-bottom: 1px solid #ff0000;
 }
-
 
 .popup__button-error {
   color: #b8b8b8;
