@@ -193,6 +193,10 @@
   .popup__image-button{
     left: 433px;
   }
+}
+
+
+@media (max-width: 500px) {
 
   .popup__form {
     max-width: 282px;
@@ -202,9 +206,8 @@
   .popup__close-button {
     width: 26px;
     height: 26px;
-/*
-    top: -45px;
-    left: 270px; */
+    top: -50px;
+    right: 5px;
   }
 
   .popup__form-content {
