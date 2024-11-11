@@ -71,7 +71,7 @@
   border: 0;
   outline: none;
   display: flex;
-  align-self: center;
+  margin-top: 35px;
 }
 
 .profile__add-button:hover {
