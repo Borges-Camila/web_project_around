@@ -5,7 +5,7 @@
   <img src="./github/Page-2.png">
 </h1>
  
-- Projeto referente a Sprint 7 do curso TripleTen, com o objetivo de colocar em prática novos conhecimento de JavaScript.
+- Projeto referente a Sprint 10 do curso TripleTen, com o objetivo de colocar em prática novos conhecimento de JavaScript.
 - Trata-se de uma página simples de rede social, com a possibilidade de modificar o profile, adicionar mais postagens de foto e curti-las, além de conseguir amplicar as fotografias para melhor visualização. 
 
 ## Tecnologias
