@@ -6,11 +6,13 @@
 </h1>
  
 - Projeto referente a Sprint 10 do curso TripleTen, com o objetivo de colocar em prática novos conhecimento de JavaScript.
-- Trata-se de uma página simples de rede social, com a possibilidade de modificar o profile, adicionar mais postagens de foto e curti-las, além de conseguir amplicar as fotografias para melhor visualização. 
+- Trata-se de uma página simples de rede social, com a possibilidade de modificar o profile, adicionar mais postagens de foto, curti-las e exclui-las, além de conseguir amplicar as fotografias para melhor visualização. 
 
 ## Tecnologias
 
 - Projeto elaborado utilizando HTML, CSS e JavaScript básico, sendo este responsível aos tamanhos de tela mobile, tablet e desktop; 
+- Também foram colocados em prática os novos conhecimentos da Programação Orientada Objetos; 
+- Respeitada a metodologia BEM. 
 
 ## Como utilizar
 
