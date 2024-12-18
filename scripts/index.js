@@ -1,6 +1,8 @@
 // ------ Import dos outros arquivos JS --------
 import Card from "./card.js";
 import FormValidator from "./formValidator.js";
+import Section from "./section.js";
+import UserInfo from "./userInfo.js";
 import {
   editButton,
   profilePopup,
@@ -39,7 +41,7 @@ closeBtnCardPopup.addEventListener("click", closeCardPopup)
 buttonCloseImage.addEventListener("click", removeBigImage)
 
 
-// função para fechar o popup clicando na sobreposição
+// função para fechar o popup clicando na sobreposição e no esc
 
 document.addEventListener("click", function (evento){
   if (evento.target == profilePopup){
@@ -59,27 +61,35 @@ document.addEventListener("keydown", function (e){
 
 
 // -------------------- ALTERAÇÃO DE PROFILE ------------------------
+const userInfo = new UserInfo({name: ".profile__title", about: ".profile__subtitle-text"})
+
 function updateProfileInfo(evento) {
   evento.preventDefault()
   if(indexName.value != "" && indexAbout.value != "") {
-    profileName.textContent = indexName.value
-    profileAbout.textContent = indexAbout.value
+    userInfo.setUserInfo(indexName.value, indexAbout.value)
     closePopup()
   }
 }
 saveButton.addEventListener("click", updateProfileInfo)
 
-// -------------------- FUNÇÃO DE ADICIONAR CARTÕES ------------------------
+// -------------------- CARTÕES ------------------------
 
-for (const card of initialCards) {
-  const newCard = new Card ({
+function renderCard(card) {
+    const newCard = new Card ({
     card,
     cardselector: "#card-template",
     openBigImage
   }).generateCard()
 
-  containerCard.prepend(newCard)
+  section.addItem(newCard)
 }
+
+const section = new Section({
+  items: initialCards,
+  renderer: renderCard},
+   ".elements")
+section.renderItems()
+
 
 function addNewCard(event){
   event.preventDefault()
@@ -99,6 +109,8 @@ function addNewCard(event){
   }
 }
 createButton.addEventListener("click", addNewCard)
+
+// -------------------- FUNÇÃO DE AMPLIAÇÃO DA IMAGEM -----------------------
 
 function openBigImage() {
   bigImage.classList.add("popup__change")
