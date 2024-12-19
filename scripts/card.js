@@ -19,7 +19,7 @@ export default class Card {
     })
 
     this._element.querySelector(".element__image").addEventListener("click", () => {
-      this._openBigImage()
+      this._openBigImage({ url: this._card.link, name: this._card.name })
     })
 
 
