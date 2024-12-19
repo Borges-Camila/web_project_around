@@ -7,27 +7,18 @@ import PopupWithForm from "./popupWithForm.js";
 import PopupWithImage from "./popupWithImage.js";
 import {
   editButton,
-  profilePopup,
   closeButton,
   indexName,
   indexAbout,
   saveButton,
   addButton,
-  CardPopup,
   closeBtnCardPopup,
   indexTitle,
   indexLink,
   containerCard,
   createButton,
   initialCards,
-  elementImage,
-  bigImage,
-  buttonCloseImage,
-  openPopup,
-  closePopup,
-  openCardPopup,
-  closeCardPopup,
-  removeBigImage
+  buttonCloseImage
 } from "./utils.js";
 
 // --------------------- VALIDAÇÃO ---------------------------
