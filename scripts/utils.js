@@ -42,3 +42,5 @@ export const initialCards = [
 export const elementImage = document.querySelector(".element__image")
 export const bigImage = document.querySelector("#PopupImage")
 export const buttonCloseImage = document.querySelector("#CloseImagePopup")
+
+

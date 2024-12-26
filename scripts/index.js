@@ -58,22 +58,29 @@ const userInfo = new UserInfo({
   about: ".profile__subtitle-text"
 })
 
-function updateProfileInfo(evento) {
+// function updateProfileInfo(evento) {
+//   evento.preventDefault()
+//   if(indexName.value != "" && indexAbout.value != "") {
+//     userInfo.setUserInfo(indexName.value, indexAbout.value)
+//     PopupProfile.close()
+//   }
+// }
+saveButton.addEventListener("click", function (evento){
   evento.preventDefault()
   if(indexName.value != "" && indexAbout.value != "") {
     userInfo.setUserInfo(indexName.value, indexAbout.value)
-    closePopup()
+    PopupProfile.close()
   }
-}
-saveButton.addEventListener("click", updateProfileInfo)
+})
 
 // ------ ABERTURA E FECHAMENTO DO PROFILE POPUP
-const PopupProfile = new PopupWithForm("#editProfilePopup");
+const PopupProfile = new PopupWithForm("#editProfilePopup")
+PopupProfile.setEventListeners()
 editButton.addEventListener("click", () =>
   PopupProfile.open())
 closeButton.addEventListener("click", () =>
   PopupProfile.close())
-PopupProfile.setEventListeners()
+
 
 
 // ------------------------------------ CARD POPUP ------------------------------------------
@@ -121,10 +128,10 @@ if(indexTitle.value != "" && indexLink.value != "") {
   containerCard.prepend(newCard)
   indexTitle.value = ""
   indexLink.value = ""
-  closeCardPopup()
+  PopupCard.close();
 }
 }
-createButton.addEventListener("click", addNewCard)
+createButton.addEventListener("submit", addNewCard)
 
 // ------ AMPLIAÇÃO DA IMAGEM
 const popupImage = new PopupWithImage("#PopupImage")
