@@ -10,13 +10,11 @@ import {
   closeButton,
   indexName,
   indexAbout,
-  saveButton,
   addButton,
   closeBtnCardPopup,
   indexTitle,
   indexLink,
   containerCard,
-  createButton,
   initialCards,
   buttonCloseImage
 } from "./utils.js";
@@ -58,23 +56,15 @@ const userInfo = new UserInfo({
   about: ".profile__subtitle-text"
 })
 
-// function updateProfileInfo(evento) {
-//   evento.preventDefault()
-//   if(indexName.value != "" && indexAbout.value != "") {
-//     userInfo.setUserInfo(indexName.value, indexAbout.value)
-//     PopupProfile.close()
-//   }
-// }
-saveButton.addEventListener("click", function (evento){
-  evento.preventDefault()
+function updateProfileInfo(evento) {
   if(indexName.value != "" && indexAbout.value != "") {
     userInfo.setUserInfo(indexName.value, indexAbout.value)
     PopupProfile.close()
   }
-})
+}
 
 // ------ ABERTURA E FECHAMENTO DO PROFILE POPUP
-const PopupProfile = new PopupWithForm("#editProfilePopup")
+const PopupProfile = new PopupWithForm("#editProfilePopup", updateProfileInfo)
 PopupProfile.setEventListeners()
 editButton.addEventListener("click", () =>
   PopupProfile.open())
@@ -87,7 +77,7 @@ closeButton.addEventListener("click", () =>
 
 
 // ------- ABERTURA E FECHAMENTO DO CARD POPUP
-const PopupCard = new PopupWithForm("#addCardPopup")
+const PopupCard = new PopupWithForm("#addCardPopup", addNewCard)
 addButton.addEventListener("click", () =>
   PopupCard.open())
 closeBtnCardPopup.addEventListener("click", () =>
@@ -115,7 +105,6 @@ section.renderItems()
 
 
 function addNewCard(event){
-event.preventDefault()
 if(indexTitle.value != "" && indexLink.value != "") {
   const newCard = new Card ({
     card: {
@@ -131,7 +120,6 @@ if(indexTitle.value != "" && indexLink.value != "") {
   PopupCard.close();
 }
 }
-createButton.addEventListener("submit", addNewCard)
 
 // ------ AMPLIAÇÃO DA IMAGEM
 const popupImage = new PopupWithImage("#PopupImage")

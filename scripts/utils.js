@@ -4,7 +4,6 @@ export const profilePopup = document.querySelector("#editProfilePopup")
 export const closeButton = document.querySelector(".popup__close-button")
 export const indexName = document.querySelector("#input-name")
 export const indexAbout = document.querySelector("#input-about")
-export const saveButton = document.querySelector(".popup__save-button")
 export const addButton = document.querySelector(".profile__add-button")
 export const CardPopup = document.querySelector("#addCardPopup")
 export const closeBtnCardPopup = document.querySelector("#close-button-card")
@@ -12,7 +11,6 @@ export const indexTitle = document.querySelector("#input-title")
 export const indexLink = document.querySelector("#input-link")
 export const containerCard = document.querySelector(".elements")
 export const placeName = document.querySelector(".element__place-name")
-export const createButton = document.querySelector("#create-button")
 export const initialCards = [
   {
     name: "Vale de Yosemite",
