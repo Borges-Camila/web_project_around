@@ -10,6 +10,18 @@
   max-height: 120px;
 }
 
+.profile__avatar:hover {
+  opacity: 0.2;
+}
+
+.profile__edit-avatar {
+  padding: 0;
+  background: url(../images/edit-profile-photo-icon.png) center no-repeat;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s ease-in;
+}
+
 .profile__info {
   max-width: 415px;
   margin: auto 165px auto 30px;
