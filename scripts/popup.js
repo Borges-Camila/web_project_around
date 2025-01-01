@@ -2,6 +2,7 @@ import {
   profilePopup,
   CardPopup,
   bigImage,
+  avatarEditPopup
 } from "./utils.js";
 
 
@@ -39,6 +40,10 @@ export default class Popup {
 
       if (evento.target.classList.contains("popup__change") ||
       evento.target === bigImage){
+        this.close()}
+
+      if (evento.target.classList.contains("popup__change") ||
+      evento.target === avatarEditPopup){
         this.close()}
     })
   }

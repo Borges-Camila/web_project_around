@@ -1,8 +1,10 @@
 export default class Card {
-  constructor({card, cardselector, openBigImage}){
+  constructor({card, cardselector, openBigImage, deleteCard, ownerId}){
    this._card = card
    this._cardselector =  cardselector
    this._openBigImage = openBigImage
+   this._deleteCard = deleteCard
+   this._ownerId = ownerId
   }
 
   _getTemplate(){
@@ -10,9 +12,18 @@ export default class Card {
     return Template
   }
 
+
+  _handleDeleteCard(){
+    if (this._ownerId !== this._card.owner){
+      alert("Não é possível deletar este cartão!")
+      return
+    }
+    this._deleteCard(this._card._id)
+  }
+
   _setEventListeners(){
-    this._element.querySelector(".element__trash").addEventListener("click", (event) => {
-      event.target.parentElement.remove()
+    this._element.querySelector(".element__trash").addEventListener("click", () => {
+      this._handleDeleteCard()
     })
     this._element.querySelector(".element__heart").addEventListener("click", (eve) => {
       eve.target.classList.toggle("element__heart-active")
