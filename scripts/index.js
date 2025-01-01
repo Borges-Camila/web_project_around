@@ -142,11 +142,11 @@ function updateAvatarImg(evento){
       return Promise.reject("Erro no patch da nova imagem do avatar");
     }
     return res.json()
-  }).then(newAvatarImg => {
-  console.log(newAvatarImg)
-  if(avatarLinkInput.value != "") {
-    userInfo.setUserInfo(avatarLinkInput.value)
-  }
+  }).then(avatarImg => {
+  console.log(avatarImg)
+   if(avatarLinkInput.value != "") {
+      userInfo.setUserInfo(avatarLinkInput.value)
+   }
   }).catch(error => {
     console.log(`[PATCH] - new avatar image - ${error}`);
   })

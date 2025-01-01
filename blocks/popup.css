@@ -26,6 +26,10 @@
   border-radius: 10px;
 }
 
+.popup__form-avatar{
+  max-height: 272px;
+}
+
 .popup__close-button {
   color: rgba(255, 255, 255, 1);
   background: transparent;
