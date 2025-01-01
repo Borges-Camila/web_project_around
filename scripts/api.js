@@ -11,7 +11,7 @@ export default class Api {
   }
 
 
-  editProfileInfo(name, about){
+  editProfileInfo({name, about}){
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: this._headers,

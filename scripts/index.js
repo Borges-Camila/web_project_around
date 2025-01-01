@@ -34,8 +34,9 @@ new FormValidator({
   config: {
     formSelector: 'form',
     inputSelector: 'input',
-    saveButtonSelector: '.popup__save-button',
+    saveButtonSelector: '#profile-saveButton',
     createuttonSelector: '#create-button',
+    avatarButtonSelector: '#profileImg-saveButton',
     inactiveButtonClass: 'popup__button-error',
     inputErrorClass: 'popup__input-error',
     messageErrorClass: 'popup__message-error'
@@ -43,18 +44,32 @@ new FormValidator({
   formSelector: "#profile-form"
 }).enableValidation()
 
-
 new FormValidator({
   config: {
     formSelector: 'form',
     inputSelector: 'input',
-    saveButtonSelector: '.popup__save-button',
+    saveButtonSelector: '#profile-saveButton',
     createuttonSelector: '#create-button',
+    avatarButtonSelector: '#profileImg-saveButton',
     inactiveButtonClass: 'popup__button-error',
     inputErrorClass: 'popup__input-error',
     messageErrorClass: 'popup__message-error'
   },
   formSelector: "#card-form"
+}).enableValidation()
+
+new FormValidator({
+  config: {
+    formSelector: 'form',
+    inputSelector: 'input',
+    saveButtonSelector: '#profile-saveButton',
+    createuttonSelector: '#create-button',
+    avatarButtonSelector: '#profileImg-saveButton',
+    inactiveButtonClass: 'popup__button-error',
+    inputErrorClass: 'popup__input-error',
+    messageErrorClass: 'popup__message-error'
+  },
+  formSelector: "#profileImg-form"
 }).enableValidation()
 
 
@@ -77,7 +92,7 @@ editButton.addEventListener("click", () =>
 
 closeButton.addEventListener("click", () =>
   PopupProfile.close())
-console.log(closeButton)
+
 // ------ CHAMAMENTO DAS INFORMAÇÕES DO PROFILE
 
 api.getUsersInfo()
@@ -97,11 +112,15 @@ console.log(user)
 
 const userInfo = new UserInfo({
   name: ".profile__title",
-  about: ".profile__subtitle-text"
+  about: ".profile__subtitle-text",
+  img: ".profile__avatar"
 })
 
 function updateProfileInfo(evento) {
-  api.editProfileInfo(indexName, indexAbout)
+  api.editProfileInfo({
+    name: indexName.value,
+    about: indexAbout.value
+  })
   .then(res => {
     if (res.ok){
       console.log(res);
@@ -110,9 +129,11 @@ function updateProfileInfo(evento) {
     return res.json()
   }).then(newUserInfo => {
   console.log(newUserInfo)
+
   if(indexName.value != "" && indexAbout.value != "") {
     userInfo.setUserInfo(indexName.value, indexAbout.value)
   }
+
   }).catch(error => {
     console.log(`[PATCH] - new user info - ${error}`);
   })
@@ -122,8 +143,11 @@ function updateProfileInfo(evento) {
 
 // ---------------------------------- AVATAR POPUP ---------------------------------------
 
-const avatarPopup = new PopupWithForm("#editProfileImg", updateAvatarImg)
+const avatarPopup = new PopupWithForm(
+  "#editProfileImg",
+  updateAvatarImg)
 avatarPopup.setEventListeners()
+
 // ------------ ABERTURA E FECHAMENTO
 
 avatarEditBtn.addEventListener("click", () =>
@@ -150,8 +174,12 @@ function updateAvatarImg(evento){
   }).catch(error => {
     console.log(`[PATCH] - new avatar image - ${error}`);
   })
+
+  avatarLinkInput.value=""
   avatarPopup.close()
+
 }
+
 
 // ------------------------------------ CARD POPUP ------------------------------------------
 
@@ -159,7 +187,7 @@ function updateAvatarImg(evento){
 const PopupCard = new PopupWithForm("#addCardPopup", addNewCard)
 addButton.addEventListener("click", () =>
   PopupCard.open())
-console.log(closeBtnCardPopup)
+
 closeBtnCardPopup.addEventListener("click", () =>
   PopupCard.close())
 PopupCard.setEventListeners()
