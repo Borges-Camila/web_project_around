@@ -1,9 +1,9 @@
 export default class Card {
-  constructor({card, cardselector, openBigImage, deleteCard, ownerId}){
+  constructor({card, cardselector, openBigImage, openConfirmationPopup, ownerId}){
    this._card = card
    this._cardselector =  cardselector
    this._openBigImage = openBigImage
-   this._deleteCard = deleteCard
+   this._openConfirmationPopup = openConfirmationPopup
    this._ownerId = ownerId
   }
 
@@ -13,17 +13,26 @@ export default class Card {
   }
 
 
-  _handleDeleteCard(){
-    if (this._ownerId !== this._card.owner){
+  _openDeletePopup(){ // OPENDELETEPOPUP--- aqui vamos colocar somente a abertura de popup
+
+
+
+    if (this._ownerId !== this._card.owner){ // Aqui para que a lixeira apareça e abra o popup o ownerId tem que ser o mesmo
       alert("Não é possível deletar este cartão!")
       return
     }
-    this._deleteCard(this._card._id)
+    this._deleteCard()
   }
 
   _setEventListeners(){
     this._element.querySelector(".element__trash").addEventListener("click", () => {
-      this._handleDeleteCard()
+      if (this._ownerId === this._card.owner){
+        this._openConfirmationPopup()
+      } else {
+        alert("Não é possível deletar este cartão!")
+        return
+      }
+
     })
     this._element.querySelector(".element__heart").addEventListener("click", (eve) => {
       eve.target.classList.toggle("element__heart-active")
@@ -39,7 +48,6 @@ export default class Card {
 
   generateCard() {
     this._element = this._getTemplate()
-
     this._element.querySelector(".element__place-name").textContent = this._card.name
     this._element.querySelector(".element__image").setAttribute("src", this._card.link)
     this._element.querySelector(".element__image").setAttribute("alt", this._card.name)

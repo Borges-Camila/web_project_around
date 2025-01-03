@@ -21,3 +21,6 @@ export const avatarEditBtn = document.querySelector(".profile__edit-avatar") // 
 export const avatarPopupClose = document.querySelector("#popup__avatarClose-button") // botão de fechar avatarPopup
 export const avatarLinkInput = document.querySelector("#input-avatar") // input do link avatar
 export const avatarSaveBtn = document.querySelector("#profileImg-saveButton") //botão de salavar do avatar popup
+export const confirmationPopup = document.querySelector("#popupDelete")
+export const deletePopupCloseBtn = document.querySelector("#closeDeletePopup")
+export const trashButton = document.querySelector(".element__trash")

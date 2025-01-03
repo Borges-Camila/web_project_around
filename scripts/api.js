@@ -67,8 +67,3 @@ export default class Api {
   }
 
 }
-
-
-// if(avatarLinkInput.value != "") {
- //   userInfo.setUserInfo(avatarLinkInput.value)
- // }

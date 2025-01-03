@@ -8,6 +8,7 @@ import Section from "./section.js";
 import UserInfo from "./userInfo.js";
 import PopupWithForm from "./popupWithForm.js";
 import PopupWithImage from "./popupWithImage.js";
+import PopupWithConfirmation from "./popupWithConfirmation.js";
 import Api from "./api.js";
 import {
   editButton,
@@ -25,7 +26,9 @@ import {
   avatarEditBtn,
   avatarPopupClose,
   avatarLinkInput,
-  avatarSaveBtn
+  avatarSaveBtn,
+  deletePopupCloseBtn,
+  trashButton
 } from "./utils.js";
 
 
@@ -94,6 +97,11 @@ closeButton.addEventListener("click", () =>
   PopupProfile.close())
 
 // ------ CHAMAMENTO DAS INFORMAÇÕES DO PROFILE
+const userInfo = new UserInfo({
+  name: ".profile__title",
+  about: ".profile__subtitle-text",
+  img: ".profile__avatar"
+})
 
 api.getUsersInfo()
 .then(res => {
@@ -104,17 +112,15 @@ api.getUsersInfo()
   return res.json()
 }).then(user => {
 console.log(user)
+userInfo.setUserInfo(user.name, user.about)
+userInfo.setUserImg(user.avatar)
+// LÓGICA COM O SETUSERINFO, onde preciso pegar as infos adquiridas na API para
+
 }).catch(error => {
   console.log(`[GET] - user - ${error}`);
 })
 
 // ----- ALTERAÇÃO DE PROFILE
-
-const userInfo = new UserInfo({
-  name: ".profile__title",
-  about: ".profile__subtitle-text",
-  img: ".profile__avatar"
-})
 
 function updateProfileInfo(evento) {
   api.editProfileInfo({
@@ -124,18 +130,17 @@ function updateProfileInfo(evento) {
   .then(res => {
     if (res.ok){
       console.log(res);
-      return Promise.reject("Erro no patch das informações dos users");
+      return res.json()
     }
-    return res.json()
+
   }).then(newUserInfo => {
   console.log(newUserInfo)
 
-  if(indexName.value != "" && indexAbout.value != "") {
-    userInfo.setUserInfo(indexName.value, indexAbout.value)
-  }
+    userInfo.setUserInfo(newUserInfo.name, newUserInfo.about)
 
   }).catch(error => {
     console.log(`[PATCH] - new user info - ${error}`);
+    return Promise.reject("Erro no patch das informações dos users");
   })
   PopupProfile.close()
 }
@@ -163,16 +168,14 @@ function updateAvatarImg(evento){
   .then(res => {
     if (res.ok){
       console.log(res);
-      return Promise.reject("Erro no patch da nova imagem do avatar");
+      return res.json()
     }
-    return res.json()
   }).then(avatarImg => {
   console.log(avatarImg)
-   if(avatarLinkInput.value != "") {
-      userInfo.setUserInfo(avatarLinkInput.value)
-   }
+      userInfo.setUserImg(avatarImg.avatar)
   }).catch(error => {
     console.log(`[PATCH] - new avatar image - ${error}`);
+    return Promise.reject("Erro no patch da nova imagem do avatar");
   })
 
   avatarLinkInput.value=""
@@ -220,7 +223,7 @@ function renderCard(card) {
   card,
   cardselector: "#card-template",
   openBigImage,
-  deleteCard,
+  openConfirmationPopup,
   ownerId: cardOwner
 }).generateCard()
 section.addItem(newCard)
@@ -244,7 +247,7 @@ api.createNewCard({
     card: card,
     cardselector: "#card-template",
     openBigImage,
-    deleteCard,
+    openConfirmationPopup,
     ownerId: cardOwner
   }).generateCard()
   containerCard.prepend(newCard)
@@ -260,7 +263,9 @@ PopupCard.close();
 }
 
 // ------------------ DELETAR CARTÕES ((( FALTA O POPUP DE CONFIRMAÇÃO )))
+
 function deleteCard(card){
+
   api.deleteCard(card)
   .then(res => {
     if (res.status !== 204){
@@ -272,6 +277,19 @@ function deleteCard(card){
     console.log(`[DELETE] - cards -  ${card} - ${error}`);
   })
 }
+
+
+const confirmDelPopup = new PopupWithConfirmation("#popupDelete")
+confirmDelPopup.setEventListeners()
+
+function openConfirmationPopup(card){
+  confirmDelPopup.open(card)
+  deletePopupCloseBtn.addEventListener("click", () =>
+  confirmDelPopup.close())
+}
+
+//-------------FUNÇÃO DO ISLIKED (preciso ter uma função que vai mexer lá na API
+//            tem que chamar isLiked do cartão, a propriedade deve variar entre true e false
 
 // ------ AMPLIAÇÃO DA IMAGEM
 const popupImage = new PopupWithImage("#PopupImage")
