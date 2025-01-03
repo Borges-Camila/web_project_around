@@ -103,6 +103,8 @@ const userInfo = new UserInfo({
   img: ".profile__avatar"
 })
 
+// ARRUMAR A CHAMADA DA API ABAIXO PARA FICAR ORGANIZADA E FECHAR
+
 api.getUsersInfo()
 .then(res => {
   if (res.status !== 200){
@@ -114,7 +116,6 @@ api.getUsersInfo()
 console.log(user)
 userInfo.setUserInfo(user.name, user.about)
 userInfo.setUserImg(user.avatar)
-// LÓGICA COM O SETUSERINFO, onde preciso pegar as infos adquiridas na API para
 
 }).catch(error => {
   console.log(`[GET] - user - ${error}`);
@@ -247,7 +248,7 @@ api.createNewCard({
     card: card,
     cardselector: "#card-template",
     openBigImage,
-    openConfirmationPopup,
+    openConfirmationPopup: (card) => {confirmDelPopup.setEventListeners()},
     ownerId: cardOwner
   }).generateCard()
   containerCard.prepend(newCard)
@@ -264,8 +265,18 @@ PopupCard.close();
 
 // ------------------ DELETAR CARTÕES ((( FALTA O POPUP DE CONFIRMAÇÃO )))
 
-function deleteCard(card){
+const confirmDelPopup = new PopupWithConfirmation("#popupDelete", deleteCard)
+confirmDelPopup.setEventListeners()
 
+function openConfirmationPopup(card){
+  console.log(card)
+  confirmDelPopup.open(card)
+  deletePopupCloseBtn.addEventListener("click", () =>
+  confirmDelPopup.close())
+}
+
+function deleteCard(card){
+  console.log(card)
   api.deleteCard(card)
   .then(res => {
     if (res.status !== 204){
@@ -279,14 +290,7 @@ function deleteCard(card){
 }
 
 
-const confirmDelPopup = new PopupWithConfirmation("#popupDelete")
-confirmDelPopup.setEventListeners()
 
-function openConfirmationPopup(card){
-  confirmDelPopup.open(card)
-  deletePopupCloseBtn.addEventListener("click", () =>
-  confirmDelPopup.close())
-}
 
 //-------------FUNÇÃO DO ISLIKED (preciso ter uma função que vai mexer lá na API
 //            tem que chamar isLiked do cartão, a propriedade deve variar entre true e false

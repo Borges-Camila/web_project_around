@@ -12,22 +12,10 @@ export default class Card {
     return Template
   }
 
-
-  _openDeletePopup(){ // OPENDELETEPOPUP--- aqui vamos colocar somente a abertura de popup
-
-
-
-    if (this._ownerId !== this._card.owner){ // Aqui para que a lixeira apareça e abra o popup o ownerId tem que ser o mesmo
-      alert("Não é possível deletar este cartão!")
-      return
-    }
-    this._deleteCard()
-  }
-
   _setEventListeners(){
     this._element.querySelector(".element__trash").addEventListener("click", () => {
       if (this._ownerId === this._card.owner){
-        this._openConfirmationPopup()
+        this._openConfirmationPopup(this._card)
       } else {
         alert("Não é possível deletar este cartão!")
         return
