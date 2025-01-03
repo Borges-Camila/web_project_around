@@ -224,7 +224,10 @@ function renderCard(card) {
   card,
   cardselector: "#card-template",
   openBigImage,
-  openConfirmationPopup,
+  openConfirmationPopup: (card) => {
+    openConfirmationPopup(card)
+    confirmDelPopup.setDeleteAction(() => deleteCard(card))
+  },
   ownerId: cardOwner
 }).generateCard()
 section.addItem(newCard)
@@ -248,7 +251,10 @@ api.createNewCard({
     card: card,
     cardselector: "#card-template",
     openBigImage,
-    openConfirmationPopup: (card) => {confirmDelPopup.setEventListeners()},
+    openConfirmationPopup: (card) => {
+      openConfirmationPopup(card)
+      confirmDelPopup.setDeleteAction(() => deleteCard(card))
+    },
     ownerId: cardOwner
   }).generateCard()
   containerCard.prepend(newCard)
@@ -276,8 +282,7 @@ function openConfirmationPopup(card){
 }
 
 function deleteCard(card){
-  console.log(card)
-  api.deleteCard(card)
+  api.deleteCard(card._id)
   .then(res => {
     if (res.status !== 204){
       console.log(res);

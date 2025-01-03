@@ -1,17 +1,21 @@
 import Popup from "./popup.js";
 
 export default class PopupWithConfirmation extends Popup{
-  constructor(seletorPopup, handleFormSubmit){
+  constructor(seletorPopup){
     super(seletorPopup);
-    this._handleFormSubmit = handleFormSubmit;
+  }
+
+  setDeleteAction(action){
+    this._handleFormSubmit = action
   }
 
   setEventListeners(){
     super.setEventListeners();
     const yesButton = this._popup.querySelector("#popupDeleteButton")
-    yesButton.addEventListener("click", () => {
-      console.log(this._handleFormSubmit)
-      this._handleFormSubmit()
+    yesButton.addEventListener("click", (event) => {
+      event.preventDefault();
+      this._handleFormSubmit();
+      this.close();
     })
   }
 
