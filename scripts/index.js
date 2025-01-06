@@ -38,8 +38,6 @@ new FormValidator({
     formSelector: 'form',
     inputSelector: 'input',
     saveButtonSelector: '#profile-saveButton',
-    createuttonSelector: '#create-button',
-    avatarButtonSelector: '#profileImg-saveButton',
     inactiveButtonClass: 'popup__button-error',
     inputErrorClass: 'popup__input-error',
     messageErrorClass: 'popup__message-error'
@@ -51,9 +49,7 @@ new FormValidator({
   config: {
     formSelector: 'form',
     inputSelector: 'input',
-    saveButtonSelector: '#profile-saveButton',
-    createuttonSelector: '#create-button',
-    avatarButtonSelector: '#profileImg-saveButton',
+    saveButtonSelector: '#create-button',
     inactiveButtonClass: 'popup__button-error',
     inputErrorClass: 'popup__input-error',
     messageErrorClass: 'popup__message-error'
@@ -65,9 +61,7 @@ new FormValidator({
   config: {
     formSelector: 'form',
     inputSelector: 'input',
-    saveButtonSelector: '#profile-saveButton',
-    createuttonSelector: '#create-button',
-    avatarButtonSelector: '#profileImg-saveButton',
+    saveButtonSelector: '#profileImg-saveButton',
     inactiveButtonClass: 'popup__button-error',
     inputErrorClass: 'popup__input-error',
     messageErrorClass: 'popup__message-error'
@@ -226,9 +220,9 @@ function renderCard(card) {
   card,
   cardselector: "#card-template",
   openBigImage,
-  openConfirmationPopup: (card) => {
+  openConfirmationPopup: (card, cardId) => {
     openConfirmationPopup(card)
-    confirmDelPopup.setDeleteAction(() => deleteCard(card))
+    confirmDelPopup.setDeleteAction(() => deleteCard(cardId))
   },
   ownerId: cardOwner,
   handleLiked: isLiked,
@@ -255,9 +249,9 @@ api.createNewCard({
     card: card,
     cardselector: "#card-template",
     openBigImage,
-    openConfirmationPopup: (card) => {
+    openConfirmationPopup: (card, cardId) => {
       openConfirmationPopup(card)
-      confirmDelPopup.setDeleteAction(() => deleteCard(card))
+      confirmDelPopup.setDeleteAction(() => deleteCard(cardId))
     },
     ownerId: cardOwner,
     handleLiked: isLiked,
@@ -271,9 +265,7 @@ api.createNewCard({
 
 indexTitle.value = ""
 indexLink.value = ""
-PopupCard.close();
-
-}
+PopupCard.close();}
 
 // ------------------ DELETAR CARTÕES ((( FALTA O POPUP DE CONFIRMAÇÃO )))
 
@@ -287,22 +279,20 @@ function openConfirmationPopup(card){
   confirmDelPopup.close())
 }
 
-function deleteCard(card){
-  api.deleteCard(card._id)
+function deleteCard(cardId){
+  api.deleteCard(cardId)
   .then(res => {
-    if (res.status !== 204){
-      console.log(res);
+    if (res.status !== 200){
+      console.log(res.status);
       return Promise.reject("Erro no delete card");
     }
-    return section
+
   }).catch(error => {
-    console.log("Card", card)
-    console.log(`[DELETE] - cards -  ${card} - ${error}`);
+    console.error(`[DELETE] - cards - ${error}`);
   })
 }
 
 //-------------FUNÇÃO DO LIKE DO CARTÃO
-
 
 function isLiked(card, isLiked){
   api.addLikes({cardId: card._card._id, isLiked})
@@ -333,8 +323,6 @@ function removeLike(card){
     console.log(`[DELETE] - remove likes -  ${card._card._id} - ${error}`);
   })
 }
-
-
 
 // ------ AMPLIAÇÃO DA IMAGEM
 const popupImage = new PopupWithImage("#PopupImage")

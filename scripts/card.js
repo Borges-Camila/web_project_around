@@ -10,9 +10,7 @@ export default class Card {
    this._likes = card.isLiked
    this._cardId = card._id
    this._handleLiked = handleLiked
-    console.log(handleLiked)
    this._removeLiked = removeLiked
-   console.log(removeLiked)
   }
 
 
@@ -24,7 +22,7 @@ export default class Card {
   _setEventListeners(){
     this._element.querySelector(".element__trash").addEventListener("click", () => {
       if (this._ownerId === this._card.owner){
-        this._openConfirmationPopup(this._card)
+        this._openConfirmationPopup(this._element, this._cardId)
       } else {
         alert("Não é possível deletar este cartão!")
         return

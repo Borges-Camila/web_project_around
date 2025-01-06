@@ -28,32 +28,17 @@ export default class FormValidator {
   _disableButton(){
     this._whiteSaveButton.classList.add(this._config.inactiveButtonClass)
     this._whiteSaveButton.setAttribute('disabled', true)
-    this._whiteCreateButton.classList.add(this._config.inactiveButtonClass)
-    this._whiteCreateButton.setAttribute('disabled', true)
-    this._whiteAvatarButton.classList.add(this._config.inactiveButtonClass)
-    this._whiteAvatarButton.setAttribute('disabled', true)
-    console.log(this._whiteAvatarButton)
   }
 
   _enableButton(){
     this._whiteSaveButton.classList.remove(this._config.inactiveButtonClass)
     this._whiteSaveButton.removeAttribute('disabled')
-    this._whiteCreateButton.classList.remove(this._config.inactiveButtonClass)
-    this._whiteCreateButton.removeAttribute('disabled')
-    this._whiteAvatarButton.classList.remove(this._config.inactiveButtonClass)
-    this._whiteAvatarButton.removeAttribute('disabled')
   }
 
 
   _checkValidity(event){
     this._input = event.target
     this._messageElement = this._input.nextElementSibling
-    this._whiteSaveButton = this._form.querySelector(this._config.saveButtonSelector)
-
-    this._whiteCreateButton = this._form.querySelector(this._config.createuttonSelector)
-
-    this._whiteAvatarButton = this._form.querySelector(this._config.avatarButtonSelector)
-    console.log(this._whiteAvatarButton)
 
         if (!this._input.validity.valid){
           this._addErrorMessage()
@@ -65,11 +50,14 @@ export default class FormValidator {
   }
 
   _setEventListeners(){
-  for (const input of this._inputs) {
-        input.addEventListener('input', (event) => {
-          this._checkValidity(event)
-        })
-    }}
+    this._whiteSaveButton = this._form.querySelector(this._config.saveButtonSelector)
+    this._disableButton()
+    for (const input of this._inputs) {
+          input.addEventListener('input', (event) => {
+            this._checkValidity(event)
+          })
+      }
+  }
 
 
   enableValidation(){

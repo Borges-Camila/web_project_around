@@ -9,11 +9,17 @@ export default class PopupWithConfirmation extends Popup{
     this._handleFormSubmit = action
   }
 
+  open(card){
+    this._card = card;
+    super.open();
+  }
+
   setEventListeners(){
     super.setEventListeners();
     const yesButton = this._popup.querySelector("#popupDeleteButton")
     yesButton.addEventListener("click", () => {
       this._handleFormSubmit();
+      this._card.remove();
       this.close();
     })
   }
