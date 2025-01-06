@@ -219,6 +219,7 @@ section = new Section({
 })
 
 // ------- FUNÇÃO CRIA CARD (COM API)
+
 function renderCard(card) {
   const newCard = new Card ({
   card,
@@ -228,7 +229,9 @@ function renderCard(card) {
     openConfirmationPopup(card)
     confirmDelPopup.setDeleteAction(() => deleteCard(card))
   },
-  ownerId: cardOwner
+  ownerId: cardOwner,
+  handleLiked: isLiked,
+  removeLiked: removeLike
 }).generateCard()
 section.addItem(newCard)
 }
@@ -255,7 +258,9 @@ api.createNewCard({
       openConfirmationPopup(card)
       confirmDelPopup.setDeleteAction(() => deleteCard(card))
     },
-    ownerId: cardOwner
+    ownerId: cardOwner,
+    handleLiked: isLiked,
+    removeLiked: removeLike
   }).generateCard()
   containerCard.prepend(newCard)
 
@@ -271,7 +276,7 @@ PopupCard.close();
 
 // ------------------ DELETAR CARTÕES ((( FALTA O POPUP DE CONFIRMAÇÃO )))
 
-const confirmDelPopup = new PopupWithConfirmation("#popupDelete", deleteCard)
+const confirmDelPopup = new PopupWithConfirmation("#popupDelete")
 confirmDelPopup.setEventListeners()
 
 function openConfirmationPopup(card){
@@ -292,13 +297,81 @@ function deleteCard(card){
     console.log("Card", card)
     console.log(`[DELETE] - cards -  ${card} - ${error}`);
   })
+  confirmDelPopup.close()
 }
 
 
+//-------------FUNÇÃO DO LIKE DO CARTÃO
+
+const likeButton = document.querySelector(".element__heart")
+
+function isLiked(card, isLiked){
+  api.addLikes({cardId: card._id, isLiked})
+  .then(res => {
+    if (!res.ok){
+      console.log(res);
+      return Promisse.reject("Erro no put do like")
+    }
+    return res.json()
+  }).then(like => {
+    console.log("like:", like)
+    card.isLiked()
+
+      // api.getInitialCards()
+      //  .then(res => {
+       //   if (res.status !== 200){
+          //  console.log(res);
+       //     return Promise.reject("Erro no get cards");
+       //   }
+       //   return res.json()
+       // }).then(cards => {
+      //  console.log(cards)
+      //  section = new Section({
+      //    items: cards,
+      //    renderer: renderCard},
+     //      ".elements")
+      //    section.renderItems()
+//
+     //   }).catch(error => {
+    //      console.log(`[GET] - cards - ${error}`);
+    //    })
+
+    }).catch(error => {
+      console.log(`[PUT] - likes - ${error}`);
+    })
+}
+
+function removeLike(card){
+  api.removeLikes(card._id)
+  .then(res => {
+    if (!res.ok){
+      console.log(res);
+      return Promise.reject("Erro no remove like");
+    }
+        api.getInitialCards()
+            .then(res => {
+              if (res.status !== 200){
+                console.log(res);
+                return Promise.reject("Erro no get cards");
+              }
+              return res.json()
+            }).then(cards => {
+            console.log(cards)
+            section = new Section({
+              items: cards,
+              renderer: renderCard},
+               ".elements")
+              section.renderItems()
+            }).catch(error => {
+              console.log(`[GET] - cards - ${error}`);
+            })
+  }).catch(error => {
+    console.log("Card", card)
+    console.log(`[DELETE] - remove likes -  ${card._id} - ${error}`);
+  })
+}
 
 
-//-------------FUNÇÃO DO ISLIKED (preciso ter uma função que vai mexer lá na API
-//            tem que chamar isLiked do cartão, a propriedade deve variar entre true e false
 
 // ------ AMPLIAÇÃO DA IMAGEM
 const popupImage = new PopupWithImage("#PopupImage")

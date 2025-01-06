@@ -12,8 +12,7 @@ export default class PopupWithConfirmation extends Popup{
   setEventListeners(){
     super.setEventListeners();
     const yesButton = this._popup.querySelector("#popupDeleteButton")
-    yesButton.addEventListener("click", (event) => {
-      event.preventDefault();
+    yesButton.addEventListener("click", () => {
       this._handleFormSubmit();
       this.close();
     })
