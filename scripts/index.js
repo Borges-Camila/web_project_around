@@ -218,6 +218,7 @@ section = new Section({
   console.log(`[GET] - cards - ${error}`);
 })
 
+
 // ------- FUNÇÃO CRIA CARD (COM API)
 
 function renderCard(card) {
@@ -293,20 +294,18 @@ function deleteCard(card){
       console.log(res);
       return Promise.reject("Erro no delete card");
     }
+    return section
   }).catch(error => {
     console.log("Card", card)
     console.log(`[DELETE] - cards -  ${card} - ${error}`);
   })
-  confirmDelPopup.close()
 }
-
 
 //-------------FUNÇÃO DO LIKE DO CARTÃO
 
-const likeButton = document.querySelector(".element__heart")
 
 function isLiked(card, isLiked){
-  api.addLikes({cardId: card._id, isLiked})
+  api.addLikes({cardId: card._card._id, isLiked})
   .then(res => {
     if (!res.ok){
       console.log(res);
@@ -315,59 +314,23 @@ function isLiked(card, isLiked){
     return res.json()
   }).then(like => {
     console.log("like:", like)
-
-
-      // api.getInitialCards()
-      //  .then(res => {
-       //   if (res.status !== 200){
-          //  console.log(res);
-       //     return Promise.reject("Erro no get cards");
-       //   }
-       //   return res.json()
-       // }).then(cards => {
-      //  console.log(cards)
-      //  section = new Section({
-      //    items: cards,
-      //    renderer: renderCard},
-     //      ".elements")
-      //    section.renderItems()
-//
-     //   }).catch(error => {
-    //      console.log(`[GET] - cards - ${error}`);
-    //    })
-
+    card.updateLikesView()
     }).catch(error => {
       console.log(`[PUT] - likes - ${error}`);
     })
 }
 
 function removeLike(card){
-  api.removeLikes(card._id)
+  api.removeLikes(card._card._id)
   .then(res => {
     if (!res.ok){
       console.log(res);
       return Promise.reject("Erro no remove like");
     }
-        api.getInitialCards()
-            .then(res => {
-              if (res.status !== 200){
-                console.log(res);
-                return Promise.reject("Erro no get cards");
-              }
-              return res.json()
-            }).then(cards => {
-            console.log(cards)
-            section = new Section({
-              items: cards,
-              renderer: renderCard},
-               ".elements")
-              section.renderItems()
-            }).catch(error => {
-              console.log(`[GET] - cards - ${error}`);
-            })
+    card.updateLikesView()
   }).catch(error => {
     console.log("Card", card)
-    console.log(`[DELETE] - remove likes -  ${card._id} - ${error}`);
+    console.log(`[DELETE] - remove likes -  ${card._card._id} - ${error}`);
   })
 }
 

@@ -32,13 +32,12 @@ export default class Card {
 
     })
     this._element.querySelector(".element__heart").addEventListener("click", (eve) => {
-      console.log(this._likes)
       if (this._likes == false){
           eve.target.classList.add("element__heart-active");
-          this._handleLiked(this._card, "true");
+          this._handleLiked(this, "true");
         } else{
           eve.target.classList.remove("element__heart-active");
-          this._removeLiked(this._card);
+          this._removeLiked(this);
         }})
 
     this._element.querySelector(".element__image").addEventListener("click", () => {
@@ -46,15 +45,18 @@ export default class Card {
     })
   }
 
-
   isLiked(){
-    console.log(this._likes)
     if (this._likes == true){
       this._element.querySelector(".element__heart").classList.add("element__heart-active")
       }
      else {
       this._element.querySelector(".element__heart").classList.remove("element__heart-active")
       }
+  }
+
+  updateLikesView(){
+    this._likes = !this._likes;
+    this.isLiked();
   }
 
   generateCard() {
