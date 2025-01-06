@@ -35,7 +35,7 @@ export default class Card {
       console.log(this._likes)
       if (this._likes == false){
           eve.target.classList.add("element__heart-active");
-          this._handleLiked(this._card, "true")
+          this._handleLiked(this._card, "true");
         } else{
           eve.target.classList.remove("element__heart-active");
           this._removeLiked(this._card);
@@ -65,8 +65,6 @@ export default class Card {
 
     this._setEventListeners()
     this.isLiked()
-    // o isLiked vai ser chamado aqui, onde a lógica vai ter que verificar se
-    // o like do cartão é true ou false para o coração aparecer da forma certa
 
     return this._element
   }

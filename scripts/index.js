@@ -315,7 +315,7 @@ function isLiked(card, isLiked){
     return res.json()
   }).then(like => {
     console.log("like:", like)
-    card.isLiked()
+
 
       // api.getInitialCards()
       //  .then(res => {
