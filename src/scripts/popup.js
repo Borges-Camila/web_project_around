@@ -30,25 +30,25 @@ export default class Popup {
   }
 
   setEventListeners(){
-      document.addEventListener("click", (evento) => {
-      if (evento.target.classList.contains("popup__change") ||
-        evento.target === profilePopup){
+      document.addEventListener("click", (event) => {
+      if (event.target.classList.contains("popup__change") ||
+        event.target === profilePopup){
         this.close()}
 
-      if (evento.target.classList.contains("popup__change") ||
-      evento.target === CardPopup){
+      if (event.target.classList.contains("popup__change") ||
+      event.target === CardPopup){
         this.close()}
 
-      if (evento.target.classList.contains("popup__change") ||
-      evento.target === bigImage){
+      if (event.target.classList.contains("popup__change") ||
+      event.target === bigImage){
         this.close()}
 
-      if (evento.target.classList.contains("popup__change") ||
-      evento.target === avatarEditPopup){
+      if (event.target.classList.contains("popup__change") ||
+      event.target === avatarEditPopup){
         this.close()}
 
-      if (evento.target.classList.contains("popup__change") ||
-      evento.target === confirmationPopup){
+      if (event.target.classList.contains("popup__change") ||
+      event.target === confirmationPopup){
         this.close()}
     })
   }

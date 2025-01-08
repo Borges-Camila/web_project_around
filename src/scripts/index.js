@@ -117,7 +117,7 @@ userInfo.setUserImg(user.avatar)
 
 // ----- ALTERAÇÃO DE PROFILE
 
-function updateProfileInfo(evento) {
+function updateProfileInfo() {
   api.editProfileInfo({
     name: indexName.value,
     about: indexAbout.value
@@ -158,7 +158,7 @@ avatarPopupClose.addEventListener("click", () =>
 
 //------------- FUNÇÃO DE MUDANÇA DO AVATAR
 
-function updateAvatarImg(evento){
+function updateAvatarImg(){
   api.editAvatarImg({ avatar: avatarLinkInput.value })
   .then(res => {
     if (res.ok){
