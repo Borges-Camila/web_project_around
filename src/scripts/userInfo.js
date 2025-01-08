@@ -14,14 +14,11 @@ export default class UserInfo {
   }
 
   setUserInfo(name, about) {
-    console.log(name);
-    console.log(about);
     this._name.textContent = name;
     this._about.textContent = about;
   }
 
   setUserImg(img) {
-    console.log(img);
     this._img.src = img;
   }
 }
