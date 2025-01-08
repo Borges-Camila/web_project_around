@@ -5,23 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>EUA Afora</title>
     <meta name="author" content="Camila Borges" />
-    <meta
-      name="description"
-      content="Around The U.S."
-    />
+    <meta name="description" content="Around The U.S." />
     <meta name="keywords" content="locais, viagem, fotos" />
     <link rel="stylesheet" href="./pages/index.css" />
-    <link rel="icon" href="favicon.ico.png" type="image/icon"/>
+    <link rel="icon" href="favicon.ico.png" type="image/icon" />
   </head>
   <body>
     <div class="page">
       <header class="header">
         <img
-        src="./images/Logo.png"
-        class="header__logo"
-        alt="Frase Around The U.S."
+          src="./images/Logo.png"
+          class="header__logo"
+          alt="Frase Around The U.S."
         />
-        <hr/>
+        <hr />
       </header>
 
       <!--CÓDIGO DO PERFIL-->
@@ -29,19 +26,16 @@
       <section class="profile">
         <button type="button" class="profile__edit-avatar">
           <img
-          src="./images/Avatar.png"
-          class="profile__avatar"
-          alt="Fotografia de um senhor de cabelos brancos, usando uma touca de cor vermelho vibrante e um camisa azul claro."
+            src="./images/Avatar.png"
+            class="profile__avatar"
+            alt="Fotografia de um senhor de cabelos brancos, usando uma touca de cor vermelho vibrante e um camisa azul claro."
           />
         </button>
         <div class="profile__info">
           <div class="profile__title-edit">
             <h1 class="profile__title">Jacques Cousteau</h1>
             <button type="button" class="profile__edit-button">
-              <img
-                src="./images/Edit-Button.png"
-                alt="Edit Button."
-              />
+              <img src="./images/Edit-Button.png" alt="Edit Button." />
             </button>
           </div>
           <div class="profile__subtitle">
@@ -51,9 +45,9 @@
         <div>
           <button type="button" class="profile__add-button">
             <img
-            src="./images/Add-Button.png"
-            alt="Add Button."
-            class="profile__button-img"
+              src="./images/Add-Button.png"
+              alt="Add Button."
+              class="profile__button-img"
             />
           </button>
         </div>
@@ -68,11 +62,7 @@
             class="popup__close-button"
             id="popup__avatarClose-button"
           >
-            <img
-              src="./images/close-icon.svg"
-              alt="Close icon X"
-
-            />
+            <img src="./images/close-icon.svg" alt="Close icon X" />
           </button>
           <div class="popup__form-content">
             <h3 class="popup__form-title">Alterar a foto do perfil</h3>
@@ -88,7 +78,11 @@
                 placeholder="Link da Imagem"
               />
               <span id="avatar-input-error" class="popup__message"></span>
-              <button type="submit" class="popup__save-button" id="profileImg-saveButton">
+              <button
+                type="submit"
+                class="popup__save-button"
+                id="profileImg-saveButton"
+              >
                 Salvar
               </button>
             </form>
@@ -105,11 +99,7 @@
             class="popup__close-button"
             id="popup__close-button"
           >
-            <img
-              src="./images/close-icon.svg"
-              alt="Close icon X"
-
-            />
+            <img src="./images/close-icon.svg" alt="Close icon X" />
           </button>
           <div class="popup__form-content">
             <h3 class="popup__form-title">Editar perfil</h3>
@@ -139,7 +129,11 @@
                 value="Explorador"
               />
               <span id="about-error" class="popup__message"></span>
-              <button type="submit" class="popup__save-button" id="profile-saveButton">
+              <button
+                type="submit"
+                class="popup__save-button"
+                id="profile-saveButton"
+              >
                 Salvar
               </button>
             </form>
@@ -147,7 +141,7 @@
         </div>
       </div>
 
-<!--POPUP PARA ADICIONAR CARTÕES-->
+      <!--POPUP PARA ADICIONAR CARTÕES-->
 
       <div class="popup" id="addCardPopup">
         <div class="popup__form" id="card-form">
@@ -156,11 +150,7 @@
             class="popup__close-button"
             id="close-button-card"
           >
-            <img
-              src="./images/close-icon.svg"
-              alt="Close icon X"
-
-            />
+            <img src="./images/close-icon.svg" alt="Close icon X" />
           </button>
           <div class="popup__form-content">
             <h3 class="popup__form-title">Novo Local</h3>
@@ -186,7 +176,11 @@
                 placeholder="Link da imagem"
               />
               <span id="link-error" class="popup__message"></span>
-              <button type="submit" class="popup__save-button" id="create-button">
+              <button
+                type="submit"
+                class="popup__save-button"
+                id="create-button"
+              >
                 Criar
               </button>
             </form>
@@ -198,59 +192,58 @@
 
       <section class="elements">
         <template id="card-template">
-        <div class="element">
-          <img
-            src="./images/Trash.png"
-            alt="Imagem de uma lixeira branca."
-            class="element__trash"
-          />
-
-          <img
-            src=""
-            alt=""
-            class="element__image"
-          />
-
-          <div class="element__content">
-            <h2 class="element__place-name"></h2>
+          <div class="element">
             <img
-              src="./images/Coração.svg"
-              alt="Coração."
-              class="element__heart"
+              src="./images/Trash.png"
+              alt="Imagem de uma lixeira branca."
+              class="element__trash"
             />
-          </div>
-        </div>
-      </template>
-      </section>
 
+            <img src="" alt="" class="element__image" />
+
+            <div class="element__content">
+              <h2 class="element__place-name"></h2>
+              <img
+                src="./images/Coração.svg"
+                alt="Coração."
+                class="element__heart"
+              />
+            </div>
+          </div>
+        </template>
+      </section>
 
       <!--POPUP PARA DELETAR OS CARTÕES-->
       <div class="popup" id="popupDelete">
         <div class="popup__form popup__form-delete">
           <button class="popup__close-button" id="closeDeletePopup">
-          <img src="./images/close-icon.svg"
-          alt="Close icon X"
-          />
+            <img src="./images/close-icon.svg" alt="Close icon X" />
           </button>
-          <h2 class="popup__form-title popup__form-title_delete">Tem certeza?</h2>
-          <button type="button" class="popup__save-button popup__save-button_delete" id="popupDeleteButton">Sim</button>
-       </div>
+          <h2 class="popup__form-title popup__form-title_delete">
+            Tem certeza?
+          </h2>
+          <button
+            type="button"
+            class="popup__save-button popup__save-button_delete"
+            id="popupDeleteButton"
+          >
+            Sim
+          </button>
+        </div>
       </div>
 
       <!--POPUP PARA AMPLIAR IMAGEM DOS CARTÕES-->
-    <section class="popup" id="PopupImage">
-      <div class="popup__content-image">
-        <button class="popup__image-button" id="CloseImagePopup">
-        <img src="./images/close-icon.svg"
-        alt="Close icon X"
-        />
-        </button>
-       <img alt="imagem ampliada" class="popup__image" src=""/>
-       <p class="popup__paragraph"></p>
-     </div>
-    </section>
+      <section class="popup" id="PopupImage">
+        <div class="popup__content-image">
+          <button class="popup__image-button" id="CloseImagePopup">
+            <img src="./images/close-icon.svg" alt="Close icon X" />
+          </button>
+          <img alt="imagem ampliada" class="popup__image" src="" />
+          <p class="popup__paragraph"></p>
+        </div>
+      </section>
 
- <!--separação de código-->
+      <!--separação de código-->
 
       <footer class="footer">
         <p class="footer__paragraph">&copy; 2024 Around the U.S.</p>

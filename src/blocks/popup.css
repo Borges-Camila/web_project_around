@@ -26,11 +26,11 @@
   border-radius: 10px;
 }
 
-.popup__form-avatar{
+.popup__form-avatar {
   max-height: 272px;
 }
 
-.popup__form-delete{
+.popup__form-delete {
   height: 181px;
   padding: 0;
 }
@@ -47,7 +47,7 @@
   cursor: pointer;
 }
 
-.popup__image-button_delete{
+.popup__image-button_delete {
   top: -40px;
   right: 60px;
 }
@@ -72,7 +72,7 @@
   margin: 34px 64px 50px 36px;
 }
 
-.popup__form-title_delete{
+.popup__form-title_delete {
   width: 358px;
   margin: 34px auto 0;
   padding: 0;
@@ -121,9 +121,9 @@
   cursor: pointer;
 }
 
-.popup__save-button_delete{
-height: 50px;
-margin: auto;
+.popup__save-button_delete {
+  height: 50px;
+  margin: auto;
 }
 
 .popup__save-button:hover {
@@ -135,7 +135,6 @@ margin: auto;
   margin: 100px auto 0;
   display: flex;
   flex-direction: column;
-
 }
 
 .popup__image {
@@ -153,14 +152,14 @@ margin: auto;
   margin-top: 10px;
 }
 
-.popup__image-button{
+.popup__image-button {
   color: rgba(255, 255, 255, 1);
   background: transparent;
   border: none;
   width: 40px;
   height: 40px;
   position: relative;
-  left: 800px
+  left: 800px;
 }
 
 .popup__image-button:hover {
@@ -168,7 +167,7 @@ margin: auto;
   cursor: pointer;
 }
 
-.popup__message{
+.popup__message {
   display: none;
 }
 
@@ -196,35 +195,28 @@ margin: auto;
   cursor: not-allowed;
 }
 
+@media (max-width: 900px) {
+  .popup__image {
+    max-width: 616px;
+  }
 
-
-@media(max-width: 900px) {
-
-.popup__image {
-  max-width: 616px;
-}
-
-.popup__image-button{
-  left: 617px
-}
-
+  .popup__image-button {
+    left: 617px;
+  }
 }
 
 @media (max-width: 800px) {
-
   .popup__image {
     max-width: 433px;
     height: 540px;
   }
 
-  .popup__image-button{
+  .popup__image-button {
     left: 433px;
   }
 }
 
-
 @media (max-width: 500px) {
-
   .popup__form {
     max-width: 300px;
     max-height: 322px;
@@ -268,7 +260,7 @@ margin: auto;
     height: 299px;
   }
 
-  .popup__image-button{
+  .popup__image-button {
     left: 240px;
     bottom: 10px;
     width: 30px;
@@ -291,5 +283,4 @@ margin: auto;
   .popup__form-content {
     width: 282px;
   }
-
 }
