@@ -1,5 +1,3 @@
-// IMPLEMENTAR ROTAS DA API
-
 // ----------------------- IMPORT JS -------------------------
 import Card from "./card.js";
 import FormValidator from "./formValidator.js";
@@ -25,9 +23,7 @@ import {
   avatarEditBtn,
   avatarPopupClose,
   avatarLinkInput,
-  avatarSaveBtn,
   deletePopupCloseBtn,
-  trashButton,
 } from "./utils.js";
 
 // --------------------- VALIDAÇÃO ---------------------------
@@ -98,13 +94,11 @@ api
   .getUsersInfo()
   .then((res) => {
     if (res.status !== 200) {
-      console.log(res);
       return Promise.reject("Erro no get users");
     }
     return res.json();
   })
   .then((user) => {
-    console.log(user);
     userInfo.setUserInfo(user.name, user.about);
     userInfo.setUserImg(user.avatar);
   })
@@ -122,20 +116,19 @@ function updateProfileInfo() {
     })
     .then((res) => {
       if (res.ok) {
-        console.log(res);
         return res.json();
       }
     })
     .then((newUserInfo) => {
-      console.log(newUserInfo);
-
       userInfo.setUserInfo(newUserInfo.name, newUserInfo.about);
     })
     .catch((error) => {
       console.log(`[PATCH] - new user info - ${error}`);
       return Promise.reject("Erro no patch das informações dos users");
+    })
+    .finally(() => {
+      PopupProfile.close();
     });
-  PopupProfile.close();
 }
 
 // ---------------------------------- AVATAR POPUP ---------------------------------------
@@ -156,21 +149,20 @@ function updateAvatarImg() {
     .editAvatarImg({ avatar: avatarLinkInput.value })
     .then((res) => {
       if (res.ok) {
-        console.log(res);
         return res.json();
       }
     })
     .then((avatarImg) => {
-      console.log(avatarImg);
       userInfo.setUserImg(avatarImg.avatar);
     })
     .catch((error) => {
       console.log(`[PATCH] - new avatar image - ${error}`);
       return Promise.reject("Erro no patch da nova imagem do avatar");
+    })
+    .finally(() => {
+      avatarPopup.close();
     });
-
   avatarLinkInput.value = "";
-  avatarPopup.close();
 }
 
 // ------------------------------------ CARD POPUP ------------------------------------------
@@ -189,13 +181,11 @@ api
   .getInitialCards()
   .then((res) => {
     if (res.status !== 200) {
-      console.log(res);
       return Promise.reject("Erro no get cards");
     }
     return res.json();
   })
   .then((cards) => {
-    console.log(cards);
     section = new Section(
       {
         items: cards,
@@ -242,8 +232,6 @@ function addNewCard() {
       return res.json();
     })
     .then((card) => {
-      console.log("Novo card", card);
-
       const newCard = new Card({
         card: card,
         cardselector: "#card-template",
@@ -260,11 +248,13 @@ function addNewCard() {
     })
     .catch((error) => {
       console.log(`[GET] - card - ${error}`);
+    })
+    .finally(() => {
+      PopupCard.close();
     });
 
   indexTitle.value = "";
   indexLink.value = "";
-  PopupCard.close();
 }
 
 // ------------------ DELETAR CARTÕES ((( FALTA O POPUP DE CONFIRMAÇÃO )))
@@ -273,7 +263,6 @@ const confirmDelPopup = new PopupWithConfirmation("#popupDelete");
 confirmDelPopup.setEventListeners();
 
 function openConfirmationPopup(card) {
-  console.log(card);
   confirmDelPopup.open(card);
   deletePopupCloseBtn.addEventListener("click", () => confirmDelPopup.close());
 }
@@ -283,7 +272,6 @@ function deleteCard(cardId) {
     .deleteCard(cardId)
     .then((res) => {
       if (res.status !== 200) {
-        console.log(res.status);
         return Promise.reject("Erro no delete card");
       }
     })
@@ -299,13 +287,11 @@ function isLiked(card, isLiked) {
     .addLikes({ cardId: card._card._id, isLiked })
     .then((res) => {
       if (!res.ok) {
-        console.log(res);
         return Promisse.reject("Erro no put do like");
       }
       return res.json();
     })
     .then((like) => {
-      console.log("like:", like);
       card.updateLikesView();
     })
     .catch((error) => {
@@ -318,13 +304,11 @@ function removeLike(card) {
     .removeLikes(card._card._id)
     .then((res) => {
       if (!res.ok) {
-        console.log(res);
         return Promise.reject("Erro no remove like");
       }
       card.updateLikesView();
     })
     .catch((error) => {
-      console.log("Card", card);
       console.log(`[DELETE] - remove likes -  ${card._card._id} - ${error}`);
     });
 }

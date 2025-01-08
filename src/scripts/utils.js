@@ -15,13 +15,11 @@ export const bigImage = document.querySelector("#PopupImage");
 export const buttonCloseImage = document.querySelector("#CloseImagePopup");
 export const token = "3aa282d7-9323-433a-907f-6e03563d6d4a";
 export const cardOwner = "da4b770da56b5c45647deca1";
-export const avatarEditPopup = document.querySelector("#editProfileImg"); // popup do avatar
-export const avatarEditBtn = document.querySelector(".profile__edit-avatar"); // botão de abertura
+export const avatarEditPopup = document.querySelector("#editProfileImg");
+export const avatarEditBtn = document.querySelector(".profile__edit-avatar");
 export const avatarPopupClose = document.querySelector(
   "#popup__avatarClose-button"
-); // botão de fechar avatarPopup
-export const avatarLinkInput = document.querySelector("#input-avatar"); // input do link avatar
-export const avatarSaveBtn = document.querySelector("#profileImg-saveButton"); //botão de salavar do avatar popup
+);
+export const avatarLinkInput = document.querySelector("#input-avatar");
 export const confirmationPopup = document.querySelector("#popupDelete");
 export const deletePopupCloseBtn = document.querySelector("#closeDeletePopup");
-export const trashButton = document.querySelector(".element__trash");

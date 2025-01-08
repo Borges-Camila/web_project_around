@@ -2,18 +2,15 @@ export default class FormValidator {
   constructor({ config, formSelector }) {
     this._config = config;
     this._formSelector = formSelector;
-    console.log(this._formSelector);
   }
 
   _getForm() {
     const formElement = document.querySelector(this._formSelector);
-    console.log(formElement);
     return formElement;
   }
 
   _addErrorMessage() {
     const errorMessage = this._input.validationMessage;
-    console.log(errorMessage);
     this._messageElement.textContent = errorMessage;
     this._messageElement.classList.add(this._config.messageErrorClass);
     this._input.classList.add(this._config.inputErrorClass);
@@ -41,12 +38,12 @@ export default class FormValidator {
 
     if (!this._input.validity.valid) {
       this._addErrorMessage();
-      this._disableButton();
     } else {
       this._removeErrorMessage();
-      this._enableButton();
     }
   }
+
+  // Função para verificar a validade dos campos imput do form
 
   _setEventListeners() {
     this._whiteSaveButton = this._form.querySelector(
@@ -56,7 +53,25 @@ export default class FormValidator {
     for (const input of this._inputs) {
       input.addEventListener("input", (event) => {
         this._checkValidity(event);
+        if (
+          this._inputs.some((input) => {
+            return !input.validity.valid;
+          })
+        ) {
+          this._disableButton();
+        } else {
+          this._enableButton();
+        }
       });
+    }
+    if (
+      this._inputs.some((input) => {
+        return !input.validity.valid;
+      })
+    ) {
+      this._disableButton();
+    } else {
+      this._enableButton();
     }
   }
 
@@ -65,7 +80,6 @@ export default class FormValidator {
     this._inputs = Array.from(
       this._form.querySelectorAll(this._config.inputSelector)
     );
-    console.log(this._inputs);
     this._setEventListeners();
   }
 }
