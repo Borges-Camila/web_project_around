@@ -1,8 +1,8 @@
 # Tripleten web_project_around
 
 <h1 align="center">
-  <img src="./github/Page-1.png">
-  <img src="./github/Page-2.png">
+  <img src="./src/github/Page-1.png">
+  <img src="./src/github/Page-2.png">
 </h1>
  
 - Projeto referente a Sprint 11 do curso TripleTen, com o objetivo de colocar em prática novos conhecimentos de JavaScript.
